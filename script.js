@@ -114,8 +114,13 @@ percent.addEventListener('click', () => {
 })
 
 back.addEventListener('click', () => {
-    
-    ans.innerHTML = ans.innerHTML.slice(0, -1);
+    if(ans.innerHTML.length === 1){
+        ans.innerHTML = 0;
+    }
+    else{
+
+        ans.innerHTML = ans.innerHTML.slice(0, -1);
+    }
    
 })
 
