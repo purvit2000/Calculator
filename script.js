@@ -57,7 +57,7 @@ opd.forEach(element => {
 opt.forEach(element => {
     element.addEventListener('click', (event) => {
     if(opd1 !== undefined){
-        optFlag = event.target.innerHTML;
+        
         opd2 = parseFloat(ans.innerHTML);
         canculate(opd1, opd2);
 
