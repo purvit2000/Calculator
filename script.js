@@ -1,4 +1,4 @@
-let opdFlag = 0; //0 indicates that the operand is taking value and it goes to 1 the moment any operand is clicked.
+let opdFlag = 0; //0 indicates that the opd1 is taking value and it goes to 1 the moment any operand is clicked.
 let optFlag = '';
 let opd1, opd2;
 
@@ -9,6 +9,26 @@ const equalTo = document.querySelector('#bEqualto');
 const sign = document.querySelector('#signChange');
 const clear = document.querySelector('#bClear');
 const percent = document.querySelector('#percent');
+
+const canculate = (a, b) => {
+    if(a === undefined || b === undefined){}
+
+    else if(optFlag === '+'){
+        ans.innerHTML = a + b;
+    }
+    else if(optFlag === '-'){
+        ans.innerHTML = a - b;
+    }
+    else if(optFlag === '*'){
+        ans.innerHTML = a * b;
+    }
+    else if(optFlag === '/'){
+        ans.innerHTML = a / b;
+    }
+    else if(optFlag === '%'){
+        ans.innerHTML = a % b;
+    }
+}
 
 opd.forEach(element => {
     element.addEventListener('click', (event) => {
@@ -36,9 +56,19 @@ opd.forEach(element => {
 
 opt.forEach(element => {
     element.addEventListener('click', (event) => {
+    if(opd1 !== undefined){
+        optFlag = event.target.innerHTML;
+        opd2 = parseFloat(ans.innerHTML);
+        canculate(opd1, opd2);
 
-    opdFlag = 1;
-    optFlag = event.target.innerHTML;
+        opd2 = undefined;
+        opd1 = undefined;
+    }
+    
+
+        opdFlag = 1;
+        optFlag = event.target.innerHTML;
+    
 
 })
 });
@@ -46,21 +76,13 @@ opt.forEach(element => {
 equalTo.addEventListener('click', () => {
     
     opd2 = parseFloat(ans.innerHTML);
-    if(optFlag === '+'){
-        ans.innerHTML = opd1 + opd2;
-    }
-    else if(optFlag === '-'){
-        ans.innerHTML = opd1 - opd2;
-    }
-    else if(optFlag === '*'){
-        ans.innerHTML = opd1 * opd2;
-    }
-    else if(optFlag === '/'){
-        ans.innerHTML = opd1 / opd2;
-    }
-    else if(optFlag === '%'){
-        ans.innerHTML = opd1 % opd2;
-    }
+    
+    canculate(opd1, opd2);
+
+    opdFlag = 0;
+    optFlag = '';
+    opd1 = undefined; 
+    opd2 = undefined; 
 
 })
 
@@ -78,10 +100,12 @@ sign.addEventListener('click', () => {
 
 clear.addEventListener('click', () => {
     
-    ans.innerHTML = '';
+    ans.innerHTML = '0';
     opdFlag = 0;
     optFlag = '';
-    opd1, opd2 = 0,0;
+    opd2 = undefined
+    opd1 = undefined;
+    
 })
 
 percent.addEventListener('click', () => {
