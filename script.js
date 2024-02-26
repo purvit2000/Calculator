@@ -9,7 +9,7 @@ const equalTo = document.querySelector('#bEqualto');
 const sign = document.querySelector('#signChange');
 const clear = document.querySelector('#bClear');
 const percent = document.querySelector('#percent');
-
+const back = document.querySelector('#bBack');
 const canculate = (a, b) => {
     if(a === undefined || b === undefined){}
 
@@ -111,5 +111,11 @@ clear.addEventListener('click', () => {
 percent.addEventListener('click', () => {
     
     ans.innerHTML = parseFloat(ans.innerHTML)/ 100;
+})
+
+back.addEventListener('click', () => {
+    
+    ans.innerHTML = ans.innerHTML.slice(0, -1);
+   
 })
 

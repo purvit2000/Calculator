@@ -71,9 +71,6 @@ button{
 .box2{
   display: flex;
   flex: 1;
-  /* border: 1px solid black; */
-  /* justify-content: center;
-  align-items: center; */
   border-radius: 5px;
   width: 6rem;
   height:4rem;
